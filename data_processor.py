@@ -1,5 +1,6 @@
 # remember to import your libraries!
 import numpy as np
+import pandas as pd
 import random
 
 def get_random_matrix(num_rows, num_columns):
@@ -23,7 +24,21 @@ def get_random_matrix(num_rows, num_columns):
     return np.random.rand(num_rows, num_columns)
 
 def get_file_dimensions(file_name):
-    return (0,0)
+    '''
+    Reads in a csv file and gets the dimensions of tabular data.
+    
+    Parameters:
+    -----------
+    file_name = name of csv file to read in.
+
+    Returns:
+    --------
+    A tuple indicating the number of rows and columns of the data.
+    '''
+
+    df = pd.read_csv(file_name, sep=',', header=None)
+    
+    return df.shape
 
 def write_matrix_to_file(num_rows, num_columns, file_name):
     return None
