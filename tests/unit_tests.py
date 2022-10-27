@@ -6,6 +6,7 @@ import os
 sys.path.append('../')
 import data_processor  # nopep8
 
+
 class TestUtils(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -30,18 +31,16 @@ class TestUtils(unittest.TestCase):
     def test_get_file_dimensions(self):
         iris_dim = data_processor.get_file_dimensions('../iris.data')
         self.assertEqual(iris_dim, (150, 5))
-        
+
     def test_write_matrix_to_file(self):
         num_rows = random.randint(1, 10)
         num_columns = random.randint(1, 10)
-        #f = open(self.test_file_name)
-        
+
         matrix = data_processor.write_matrix_to_file(num_rows, num_columns,
                                                      self.test_file_name)
-        
+
         self.assertEqual(matrix.shape, (num_rows, num_columns))
-        f.close()
-        
-        
+
+
 if __name__ == "__main__":
     unittest.main()
