@@ -20,7 +20,7 @@ jobs: # useful names are important
           environment-file: environment.yml
       - run: |
           cd tests
-          bash func_test.sh
+          ./func_test.sh
         
   code_style:
     runs-on: ubuntu-latest
