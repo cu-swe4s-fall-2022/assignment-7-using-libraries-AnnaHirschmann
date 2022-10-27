@@ -17,7 +17,7 @@ jobs: # useful names are important
       - uses: conda-incubator/setup-miniconda@v2
         with: 
           activate-environment: swe4s
-          environment-file: environment.yml
+          environment-file: env.yml
       - run: |
           cd tests
           ./func_test.sh
@@ -32,7 +32,7 @@ jobs: # useful names are important
       - uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: swe4s
-          environment-file: environment.yml
+          environment-file: env.yml
       - run: pycodestyle $(git ls-files "*.py") # nice way of generalizing and not having to list every python file
       
   unit_tests:
