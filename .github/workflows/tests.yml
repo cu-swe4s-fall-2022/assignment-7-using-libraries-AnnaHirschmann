@@ -18,8 +18,9 @@ jobs: # useful names are important
         with: # idk how these environments work....
           activate-environment: swe4s
           environment-file: environment.yml
-      - run:
-          bash ../tests/func_test.sh
+      - run: |
+          cd tests
+          bash func_test.sh
         
   code_style:
     runs-on: ubuntu-latest
@@ -38,5 +39,6 @@ jobs: # useful names are important
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run:
-          python -m unittest ../tests/unit_tests.py
+      - run: |
+          cd tests
+          python -m unittest unit_tests.py
