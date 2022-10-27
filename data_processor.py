@@ -19,10 +19,11 @@ def get_random_matrix(num_rows, num_columns):
     A matrix of size num_rows x num_columns (2 dimensional numpy array)
     that contains random floating point numbers from the range (0,1].
     '''
-	return None
+    
+    return np.random.rand(num_rows, num_columns)
 
 def get_file_dimensions(file_name):
-	return (0,0)
+    return (0,0)
 
 def write_matrix_to_file(num_rows, num_columns, file_name):
-	return None
+    return None
