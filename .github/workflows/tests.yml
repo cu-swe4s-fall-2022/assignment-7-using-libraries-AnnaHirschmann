@@ -1,0 +1,42 @@
+name: Testing
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    
+jobs: # useful names are important
+  func_tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: conda-incubator/setup-miniconda@v2
+        with: # idk how these environments work....
+          activate-environment: swe4s
+          environment-file: environment.yml
+      - run:
+          bash ../tests/func_test.sh
+        
+  code_style:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: swe4s
+          environment-file: environment.yml
+      - run: pycodestyle $(git ls-files "*.py") # nice way of generalizing and not having to list every python file
+      
+  unit_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run:
+          python -m unittest ../tests/unit_tests.py
